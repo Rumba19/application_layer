@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 /**
  * Layer 7 Protection Framework
  */
@@ -9,12 +11,37 @@ public class Layer7Security {
         System.out.println("Input: " + userInput);
         System.out.println("Client IP: " + clientIP);
         
-        // We'll add security checks here step by step
-        
+         if (detectSQLInjection(userInput)) {
+        System.out.println(" THREAT DETECTED: SQL Injection attempt!");
+        return false; // Block the request
+    }
+    
+    System.out.println(" SQL Injection check: PASSED");
+
         return true; // For now, allow all requests
     }
     
+    private static final Pattern SQL_INJECTION = Pattern.compile(
+        "(?i)(SELECT|INSERT|UPDATE|DELETE|DROP|UNION|CREATE|ALTER|EXEC|SCRIPT)", 
+        Pattern.CASE_INSENSITIVE
+    );
   
+    private boolean detectSQLInjection(String input) {
+            if (input == null) return false;
+            
+            // Check if input contains dangerous SQL keywords
+            if (SQL_INJECTION.matcher(input).find()) {
+                return true; // SQL injection detected!
+            }
+            
+            // Check for common SQL injection characters
+            if (input.contains("'") || input.contains("--") || input.contains(";")) {
+                System.out.println("⚠️  Suspicious characters detected: quotes, comments, or semicolons");
+                return true;
+            }
+            
+            return false; // No SQL injection found
+    }
     public static void main(String[] args) {
         Layer7Security security = new Layer7Security();
 
