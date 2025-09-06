@@ -24,5 +24,5 @@ java Layer7Security && java OTPEncryption
 ```
 ### Features
 
-Layer 7 Security: SQL injection & XSS protection
-One-Time Pad: Perfect encryption for "MY NAME IS UNKNOWN"
+- Layer 7 Security: SQL injection & XSS protection
+- One-Time Pad: Perfect encryption for "MY NAME IS UNKNOWN"
