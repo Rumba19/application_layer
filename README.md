@@ -11,6 +11,8 @@
 javac Layer7Security.java
 java Layer7Security
 ```
+![Layer 7 Security Output](sql.png)
+![Security Output](sqlInjection.png)
 ### Question 2: One-Time Pad
 ```bash
 javac OTPEncryption.java
