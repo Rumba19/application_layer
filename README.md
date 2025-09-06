@@ -24,6 +24,8 @@ java OTPEncryption
 javac *.java
 java Layer7Security && java OTPEncryption
 ```
+
+![OTP](OTP.png)
 ### Features
 
 - Layer 7 Security: SQL injection & XSS protection
